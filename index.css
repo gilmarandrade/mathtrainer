@@ -8,6 +8,37 @@ body {
     font-family: sans-serif;
 }
 
+body.--pointer-events-none {
+    pointer-events: none;
+}
+
+@keyframes countdown {
+    from {width: 100%;}
+    to {width: 0;}
+}
+
+.countdownBar {
+    content: "r";
+    position: absolute;
+    background-color: rgb(158, 227, 236);
+    box-shadow: 7px 0px 20px 12px rgb(158, 227, 236);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.countdownBar.active {
+    /* transition-property: width;
+    transition-duration: 10s;
+    transition-timing-function: linear;
+    width: 0; */
+    animation-name: countdown;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+}
+
 .overlay {
     position: fixed;
     left: 0;
@@ -32,7 +63,7 @@ body {
 
 .success .overlay {
     background-color: rgb(0, 165, 14);
-    opacity: 1;
+    opacity: .8;
 }
 
 
@@ -42,7 +73,7 @@ body {
 
 .error .overlay {
     background-color: rgb(165, 0, 0);
-    opacity: 1;
+    opacity: .8;
 }
 
 .error .overlay .overlay__error {
@@ -65,15 +96,19 @@ main {
     width: 100%;
     opacity: 1;
     transition: opacity 1s ease-in-out;
+    outline: none;
 }
 
 .option:hover {
     background-color: rgb(0, 59, 70);
 }
 
-.option:active {
+.option:active, .option:focus {
     background-color: rgb(0, 101, 119);
+    outline: none;
 }
+
+
 
 .option.success {
     background-color: rgb(0, 165, 14);

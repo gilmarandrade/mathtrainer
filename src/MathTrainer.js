@@ -21,10 +21,16 @@ export default class MathTrainer {
         this.numberOfOptions = 2,
         this.threshold = 1000,
         this.decimalDigits = 0,
-        this.intergerDigits = 1;
+        this.intergerDigits = 1,
+        this.timeout = 5000,
+
+        this.timeoutTimer,
+        this.startTime,
+        this.endTime;
     }
     
     init() {
+        document.querySelector('.countdownBar').style.animationDuration = this.timeout/1000 + 's';
         this.container = document.querySelector('#options');
 
         this.min = Math.pow(10,this.intergerDigits-1) - 1;
@@ -71,6 +77,11 @@ export default class MathTrainer {
     }
     
     verifyAnswer(option) {
+        document.querySelector('.countdownBar').classList.remove('active');
+        clearTimeout(this.timeoutTimer);
+        this.endTime = new Date();
+
+        document.querySelector('body').classList.add('--pointer-events-none');
         if(option == Math.max(...this.numbers)) {
             this.hits++;
             document.querySelector('body').classList.add('success');
@@ -89,8 +100,16 @@ export default class MathTrainer {
             this.container.appendChild(box);  
         });
         
+        document.querySelector('body').classList.remove('--pointer-events-none');
         document.querySelector('body').classList.remove('success');
         document.querySelector('body').classList.remove('error');
+
+        document.querySelector('.countdownBar').classList.add('active');
+        this.startTime = new Date();
+        this.timeoutTimer = setTimeout(() => {
+            console.log('fim do tempo');
+            this.verifyAnswer(null);
+        } , this.timeout);
     }
 
     getRandomArbitrary(min, max) {
