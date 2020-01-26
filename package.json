@@ -1,0 +1,14 @@
+{
+  "name": "mathtrainer",
+  "version": "1.0.0",
+  "description": "Treinador de calculos mentais inspirado no site mathtrainer.org",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "math"
+  ],
+  "author": "Gilmar Andrade",
+  "license": "ISC"
+}
