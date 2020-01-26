@@ -8,8 +8,45 @@ body {
     font-family: sans-serif;
 }
 
-.loading {
+.overlay {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: black;
+    text-align: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10em;
     pointer-events: none;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+}
+
+.overlay .overlay__success, .overlay .overlay__error {
+    display: none;
+}
+
+.success .overlay {
+    background-color: rgb(0, 165, 14);
+    opacity: 1;
+}
+
+
+.success .overlay .overlay__success {
+    display: block;
+}
+
+.error .overlay {
+    background-color: rgb(165, 0, 0);
+    opacity: 1;
+}
+
+.error .overlay .overlay__error {
+    display: block;
 }
 
 main {
@@ -26,6 +63,8 @@ main {
     border: none;
     display: block;
     width: 100%;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
 }
 
 .option:hover {

@@ -2,13 +2,31 @@
   "name": "mathtrainer",
   "version": "1.0.0",
   "description": "Treinador de calculos mentais inspirado no site mathtrainer.org",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --watch"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gilmarandrade/mathtrainer.git"
+  },
+  "homepage": "https://github.com/gilmarandrade/mathtrainer#readme",
   "keywords": [
     "math"
   ],
   "author": "Gilmar Andrade",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.8.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/register": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
 }
